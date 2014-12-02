@@ -1,3 +1,3 @@
 hello-world
 ===========
-boom...there you have my readme
+This is my little repository of horrors and may contain VBA, Python and SQL little things...
