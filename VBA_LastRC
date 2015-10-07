@@ -1,0 +1,30 @@
+Function LastOfSheet(varSheet As String, varRC As String)
+'Name           LastOfSheet
+'Description    Find the last row or column of the sheet
+'Inputs         varSheet    String containing the sheet name
+'               varRC       Takes string values "R" indicating row, or "C" indicating column.
+'Outputs        Output      Row or column of sheet specified
+'Change History
+'yyyy-mm-dd     Editor                  Description of changes
+'2015-10-07     git\thisnamewasnottaken First version
+
+'INITIALISE
+    'Determine starting folder to return to after code runs
+    varStartingSheet = ActiveSheet.Name
+
+'RUN
+    Sheets(varSheet).Activate
+    Select Case varRC
+        Case "R"
+            LastOfSheet = Cells.Find(What:="*", After:=[A1], SearchOrder:=xlByRows, SearchDirection:=xlPrevious).Row
+            GoTo CloseElegant
+        Case "C"
+            LastOfSheet = Cells.Find(What:="*", After:=[A1], SearchOrder:=xlByColumns, SearchDirection:=xlPrevious).Column
+    End Select
+            
+    
+CloseElegant:
+    'Return to starting Sheet
+    Sheets(varStartingSheet).Activate
+
+End Function
